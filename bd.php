@@ -33,7 +33,7 @@ function leer_config($nombre, $esquema) {
 function cargar_categorias() {
     $res = leer_config(dirname(__FILE__)."/configuracion.xml", dirname(__FILE__)."/configuracion.xsd");
     $bd = new PDO($res[0], $res[1], $res[2]);
-    $ins = "SELECT codCat, nombre FROM categoria";
+    $ins = "SELECT CodCat, nombre FROM categorias";
     $resul = $bd->query($ins);
     if(!$resul) {
         return FALSE;
@@ -53,7 +53,7 @@ function cargar_categorias() {
 function cargar_categoria($codCat) {
     $res = leer_config(dirname(__FILE__)."/configuracion.xml", dirname(__FILE__)."/configuracion.xsd");
     $bd = new PDO($res[0], $res[1], $res[2]);
-    $ins = "SELECT nombre, descripcion FROM categoria WHERE codCat=$codCat";
+    $ins = "SELECT nombre, descripcion FROM categorias WHERE codCat=$codCat";
     $resul = $bd->query($ins);
     if(!$resul) {
         return FALSE;
@@ -63,8 +63,8 @@ function cargar_categoria($codCat) {
     }
     $categoria = $resul -> fetch();
     return array(
-        "nombre" => $categoria['nombre'],
-        "descripcion" => $categoria['descripcion']
+        "nombre" => $categoria['Nombre'],
+        "descripcion" => $categoria['Descripcion']
     );
 }
 
@@ -78,7 +78,7 @@ function cargar_categoria($codCat) {
 function comprobar_usuario($nombre, $clave) {
     $res = leer_config(dirname(__FILE__)."/configuracion.xml", dirname(__FILE__)."/configuracion.xsd");
     $bd = new PDO($res[0], $res[1], $res[2]);
-    $ins = "SELECT codRes, correo FROM restaurante WHERE correo='$nombre' AND clave='$clave'";
+    $ins = "SELECT codRes, Correo FROM restaurantes WHERE Correo='$nombre' AND clave='$clave'";
     $resul = $bd->query($ins);
     if(!$resul) {
         return FALSE;
@@ -88,8 +88,8 @@ function comprobar_usuario($nombre, $clave) {
     }
     $usuario = $resul -> fetch();
     return array(
-        "codRes" => $usuario['codRes'],
-        "correo" => $usuario['correo']
+        "CodRes" => $usuario['CodRes'],
+        "Correo" => $usuario['Correo']
     );
 }
 
@@ -101,7 +101,7 @@ function comprobar_usuario($nombre, $clave) {
 function cargar_productos_categoria($codCat) {
     $res = leer_config(dirname(__FILE__)."/configuracion.xml", dirname(__FILE__)."/configuracion.xsd");
     $bd = new PDO($res[0], $res[1], $res[2]);
-    $ins = "SELECT * FROM producto WHERE categoria='$codCat'";
+    $ins = "SELECT * FROM producto WHERE categorias='$codCat'";
     $resul = $bd->query($ins);
     if(!$resul) {
         return FALSE;

@@ -17,7 +17,7 @@ comprobar_sesion();
     <hl>Lista de categorías</hl>
     <!-- Lista de vínculos con la forma productos.php?categoria=1 -->
     <?php
-    $categorias = cargar_categorias();
+    $categorias = cargar_categoria();
     if($categorias === FALSE) {
         echo "<p class='error'>Error al conectar con la base datos</
             p>";

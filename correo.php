@@ -44,8 +44,8 @@ function enviar_correos($carrito, $pedido, $correo) {
     // Introducir usuario de google
     $mail->Username = "jesuslpinzolas@gmail.com";
     // Introducir clave
-    $mail->Password = "yqfevtlnamwujoio";
-    $mail->SetFrom("jesuslpinzolas@gmail.com", "Jesús L. Pinzolas");
+    $mail->Password = "mxyzddgugzvauqbq";
+    $mail->SetFrom("jorgeramirezdeveloper@gmail.com", "Jorge Ramírez");
     // Asunto
     $mail->Subject = "Confirmación pedido";
     $cuerpoMensaje = crear_correo($carrito, $pedido, $correo);
